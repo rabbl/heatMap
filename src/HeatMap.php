@@ -27,7 +27,7 @@ class HeatMap
     public function createWithAbsoluteLimits(array $data, float $min, float $max){
 
         if (! $this->isData2d($data)){
-            throw new InvalidArgumentException('Given data does not have 2 Dimensions');
+            throw new \InvalidArgumentException('Given data does not have 2 Dimensions');
         }
 
         $height = count($data);
@@ -54,7 +54,7 @@ class HeatMap
 
     public function createWithPercentileLimits(array $data, float $lowerPercentile, float $upperPercentile){
         if (! $this->isData2d($data)){
-            throw new InvalidArgumentException('Given data does not have 2 Dimensions');
+            throw new \InvalidArgumentException('Given data does not have 2 Dimensions');
         }
 
         $allValues = [];

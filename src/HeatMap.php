@@ -81,5 +81,4 @@ class HeatMap
     private function isData2d(array $data){
         return is_array($data) && is_array($data[0]) && !is_array($data[0][0]);
     }
-
 }

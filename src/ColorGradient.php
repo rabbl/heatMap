@@ -289,7 +289,4 @@ class ColorGradient
         "yellow" => "FFFF00",
         "yellowgreen" => "9ACD32"
     );
-
-
-
 }

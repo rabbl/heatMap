@@ -85,12 +85,6 @@ class RainbowVis
             return $gradient->colorAt($value);
         }
 
-        if ($value > $this->maxValue){
-            /** @var ColorGradient $gradient */
-            $gradient = $this->gradients[count($this->gradients)-1];
-            return $gradient->colorAt($value);
-        }
-
         /** @var ColorGradient $gradient */
         foreach ($this->gradients as $gradient){
             if ($gradient->getMinValue() <= $value && $gradient->getMaxValue() >= $value){
@@ -98,7 +92,8 @@ class RainbowVis
             }
         }
 
-        throw new \InvalidArgumentException(sprintf('There is no gradient set for the given value %s', $value));
+        $gradient = $this->gradients[count($this->gradients)-1];
+        return $gradient->colorAt($value);
     }
 
     /**

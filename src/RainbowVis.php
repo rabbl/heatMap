@@ -62,6 +62,13 @@ class RainbowVis
     }
 
     /**
+     * @return array
+     */
+    public function getSpectrum(){
+        return $this->spectrum;
+    }
+
+    /**
      * @param array $spectrum
      * @return $this
      */

@@ -43,6 +43,12 @@ class RainbowVisTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('808080', $this->rainbowVis->colorAt(15));
     }
 
+    public function testSetNumberRangeWithWrongValuesReturnsException(){
+        $this->expectException(\InvalidArgumentException::class);
+        $this->rainbowVis = new RainbowVis(array('black', 'white'), 10, 20);
+        $this->rainbowVis->setNumberRange(50, 2);
+    }
+
     public function testCanDoColorAtWithThreeColors(){
         $this->rainbowVis = new RainbowVis(array('black', 'white', 'blue'), 0, 40);
         $this->assertEquals('ffffff', $this->rainbowVis->colorAt(20));

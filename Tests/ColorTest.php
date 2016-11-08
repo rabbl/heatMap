@@ -41,4 +41,9 @@ class ColorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(211, $color->getB());
         $this->assertEquals(0.2, $color->getA());
     }
+
+    public function testThrowsExceptionWithInvalidHexValue(){
+        $this->expectException(\InvalidArgumentException::class);
+        Color::fromHex('hhjhjhjjj', 0.2);
+    }
 }

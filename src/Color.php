@@ -18,7 +18,7 @@ class Color
 
     private final function __construct(){}
 
-    public static function fromHex(string $hex, float $a = 1){
+    public static function fromHex(string $hex, float $a = 1.0){
 
         $hex = ltrim($hex, '#');
         if (! ctype_xdigit($hex)){

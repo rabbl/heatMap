@@ -16,7 +16,7 @@ class Color
     /** @var float */
     protected $a;
 
-    private final function __construct(){}
+    final private function __construct(){}
 
     public static function fromHex(string $hex, float $a = 1.0){
 

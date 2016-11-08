@@ -25,4 +25,18 @@ Or install it on the command line:  ```composer require rabbl/heatmap```
 
 ## Usage
 
-... coming soon ...
+```php
+$heatMap = new HeatMap();
+$heatMap->setData(array(
+    [0,1,2,3,5,6,7,8,9],
+    [0,1,2,3,5,6,7,8,9],
+    [0,1,2,3,5,6,7,8,9],
+    [0,1,2,3,5,6,7,8,9],
+    [0,1,2,3,5,6,7,8,9],
+    [0,1,2,3,5,6,7,8,9]
+));
+$heatMap->setSpectrum('blue', 'green', 'yellow', 'red');
+$fileName = $heatMap->createWithAbsoluteLimits($data, 0, 9);
+```
+
+Returns the temporary filename of the generated image.

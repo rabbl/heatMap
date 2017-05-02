@@ -17,7 +17,7 @@ Composer is used for installation. Add the following lines to your ```composer.j
 
 ```
 "require": {
-    "rabbl/heatmap": "^1.0"
+    "rabbl/heatmap": "^1.1"
 }
 ```
 

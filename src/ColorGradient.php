@@ -30,7 +30,7 @@ class ColorGradient
      * @param float $maxValue
      */
     public function setNumberRange(float $minValue, float $maxValue){
-        if ($minValue >= $maxValue){
+        if ($minValue > $maxValue){
             throw new \InvalidArgumentException(sprintf('MaxValue %s is not greater then MinValue %s', $minValue, $maxValue));
         }
 

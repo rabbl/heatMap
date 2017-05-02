@@ -45,11 +45,6 @@ class ColorGradientTest extends \PHPUnit_Framework_TestCase
         $this->colorGradient->setNumberRange(1.5, 1.2);
     }
 
-    public function testSetNumberRangeWithFloatsWhereMinEqualMax(){
-        $this->expectException(\InvalidArgumentException::class);
-        $this->colorGradient->setNumberRange(1.2, 1.2);
-    }
-
     public function testColorAtMinEqualsStartColor(){
         $startColor = 'FFFFFF';
         $endColor = '000000';

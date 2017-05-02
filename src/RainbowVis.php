@@ -24,6 +24,10 @@ class RainbowVis
      */
     public function __construct(array $spectrum, float $minValue, float $maxValue)
     {
+        if ($minValue === $maxValue){
+            $spectrum = [$spectrum[0]];
+        }
+
         $this->setSpectrumByArray($spectrum);
         $this->setNumberRange(floor($minValue), ceil($maxValue));
     }
@@ -36,12 +40,20 @@ class RainbowVis
 
         $this->gradients = [];
 
-        if (count($spectrum) < 2) {
-            throw new \InvalidArgumentException(sprintf('Spectrum must have at least two colours, %s given.', count($spectrum)));
+        if (count($spectrum) < 1) {
+            throw new \InvalidArgumentException(sprintf('Spectrum must have at least one colour, %s given.', count($spectrum)));
+        }
+
+        if (count($spectrum) == 1) {
+            $gradient = new ColorGradient();
+            $gradient->setGradient($spectrum[0], $spectrum[0]);
+            $gradient->setNumberRange(0, 1);
+            $this->gradients[] = $gradient;
+            $this->spectrum = $spectrum;
+            return $this;
         }
 
         $increment = ($this->maxValue - $this->minValue)/(count($spectrum)-1);
-
         for ($i=0; $i<count($spectrum)-1; $i++){
             $gradient = new ColorGradient();
             $gradient->setGradient($spectrum[$i], $spectrum[$i + 1]);
@@ -72,7 +84,7 @@ class RainbowVis
      * @param array $spectrum
      * @return $this
      */
-    public function setSpectrumByArray(array $spectrum){
+    public function setSpectrumByArray(array $spectrum) {
         $this->setColors($spectrum);
         return $this;
     }
@@ -102,7 +114,7 @@ class RainbowVis
      * @return $this
      */
     public function setNumberRange(float $minValue, float $maxValue){
-        if ($minValue >= $maxValue){
+        if ($minValue > $maxValue){
             throw new \InvalidArgumentException(sprintf('MaxValue %s is not greater then MinValue %s', $minValue, $maxValue));
         }
 

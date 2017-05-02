@@ -17,9 +17,9 @@ class RainbowVisTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(RainbowVis::class, $this->rainbowVis);
     }
 
-    public function testInstantiateWithLessThanTwoColorsThrowsException(){
+    public function testInstantiateWithLessThanOneColorThrowsException(){
         $this->expectException(\InvalidArgumentException::class);
-        $this->rainbowVis = new RainbowVis(array('black'), 10, 20);
+        $this->rainbowVis = new RainbowVis(array(), 10, 20);
     }
 
     public function testSetSpectrum(){
@@ -54,5 +54,13 @@ class RainbowVisTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('ffffff', $this->rainbowVis->colorAt(20));
         $this->assertEquals('808080', $this->rainbowVis->colorAt(10));
         $this->assertEquals('8080ff', $this->rainbowVis->colorAt(30));
+    }
+
+    public function testCanDoColorAtSameValues(){
+        $this->rainbowVis = new RainbowVis(array('black', 'white', 'blue'), 40, 40);
+        $this->assertEquals('000000', $this->rainbowVis->colorAt(50));
+        $this->assertEquals('000000', $this->rainbowVis->colorAt(20));
+        $this->assertEquals('000000', $this->rainbowVis->colorAt(10));
+        $this->assertEquals('000000', $this->rainbowVis->colorAt(-10));
     }
 }

@@ -19,5 +19,12 @@
     },
     "autoload-dev": {
         "psr-4": { "HeatMap\\Tests\\": "tests/" }
+    },
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "scripts": {
+        "test": "vendor/phpunit/phpunit/phpunit",
+        "test-with-coverage": "vendor/phpunit/phpunit/phpunit --coverage-clover=some-file"
     }
 }
